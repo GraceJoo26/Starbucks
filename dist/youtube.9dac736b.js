@@ -117,79 +117,35 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"js/youtube.js":[function(require,module,exports) {
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); // 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
+function onYouTubeIframeAPIReady() {
+  //<div id="player"></div>
+  new YT.Player('player', {
+    videoId: 'An6LvWQuj_8',
+    //최초 재생할 유튜브 영상 ID(주소 url에 있음 v = 다음;)
+    playerVars: {
+      autoplay: true,
+      //자동재생유무
+      loop: true,
+      //반복재생유무
+      playlist: 'An6LvWQuj_8' //반복재생할 유투브 영상 ID목록
 
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
+    },
+    events: {
+      onReady: function onReady(event) {
+        event.target.mute(); //음소거
       }
     }
-
-    cssTimeout = null;
-  }, 50);
+  });
 }
-
-module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/main.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./..\\images\\main_menu_pattern.jpg":[["main_menu_pattern.d27f1d8c.jpg","images/main_menu_pattern.jpg"],"images/main_menu_pattern.jpg"],"./..\\images\\visual_bg.jpg":[["visual_bg.12b4b254.jpg","images/visual_bg.jpg"],"images/visual_bg.jpg"],"./..\\images\\promotion_slide_pager.png":[["promotion_slide_pager.32713a0f.png","images/promotion_slide_pager.png"],"images/promotion_slide_pager.png"],"./..\\images\\promotion_slide_pager_on.png":[["promotion_slide_pager_on.2b454e48.png","images/promotion_slide_pager_on.png"],"images/promotion_slide_pager_on.png"],"./..\\images\\rewards.jpg":[["rewards.1cbbe848.jpg","images/rewards.jpg"],"images/rewards.jpg"],"./..\\images\\video_cover_pattern.png":[["video_cover_pattern.21aef85e.png","images/video_cover_pattern.png"],"images/video_cover_pattern.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +349,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.c52e0fe2.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/youtube.js"], null)
+//# sourceMappingURL=/youtube.9dac736b.js.map
