@@ -1,4 +1,3 @@
-import _  from 'lodash';
 /* let myName = "Grace";
 let email = 'gracejoo26@gmail.com';
 let hello = `Hello ${myName}?!`//보관법
@@ -141,18 +140,17 @@ new Swiper('.notice-line .swiper', {
   autoplay: true,
   loop: true
 });
-
-new Swiper('.promotion .swiper', {
-  slidesPerView: 3, //한번에 보여줄 수 있는 슬라이드개수
-  spaceBetween:10, //슬라이드 사이 여백
-  centeredSlides:true, // 1번 슬라이드가 가운데보이게
+new Swiper('.promotion .swiper-container',{
+  slidesPerView:3,//한번에 보여줄 슬라이드 개수
+  spaceBetween:10,//slide여백
+  centeredSlides:true,//center부터 출력
   loop:true,
-  autoplay:{
-    delay:5000,
+  autoplay: {
+    delay:5000
   },
   pagination:{
-    el:'.promotion .swiper-pagination', // 페이지 번호요소 선택자
-    clickable: true //사용자의 페이지 번호요소 제어여부
+    el:'.promotion .swiper-pagination',//page번호 요소 선택자
+    clickable: true//사용자의 페이지 번호 요소 제어
   },
   navigation:{
     prevEl:'.promotion .swiper-prev',
@@ -160,4 +158,16 @@ new Swiper('.promotion .swiper', {
   }
 });
 
-
+const promotionEl = document.querySelector ('.promotion');
+const promotionToggleBtn = document.querySelector('.toggle-promotion');
+let isHidePromotion = false;//'숨겨져 있니?'변수에 (false)보이고있다.
+promotionToggleBtn.addEventListener('click',function(){
+  isHidePromotion = !isHidePromotion //!뒤에있는게 반대로 해주세요 (지수의 값을 반대값으로 전환시킴)
+  if(isHidePromotion){
+    //숨김처리
+    promotionEl.classList.add('hide');
+  }else{
+    //보임처리
+    promotionEl.classList.remove('hide');
+  }
+})

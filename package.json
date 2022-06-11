@@ -1,9 +1,10 @@
 {
   "name": "starbucks",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "serve":"parcel index.html",
+    "dev": "parcel index.html",
     "build": "parcel build index.html"
   },
   "keywords": [],
@@ -14,14 +15,5 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GraceJoo26/Starbucks.git"
-  },
-  "bugs": {
-    "url": "https://github.com/GraceJoo26/Starbucks/issues"
-  },
-  "homepage": "https://github.com/GraceJoo26/Starbucks#readme",
-  "description": ""
+  }
 }
