@@ -649,14 +649,42 @@ header .badges .badge {
 }
 .reserve-store .inner{
   height:600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.reserve-store .medal{}
+.reserve-store .medal{
+  width:334px;
+  height: 334px;
+  perspective: 600px;
+}
+
 .reserve-store .medal .front,
 .reserve-store .medal .back{
   width:334px;
   height:334px;
+  position: absolute;
   backface-visibility: hidden;
+  transition: 1s;
 }
-.reserve-store .medal .front{}
-.reserve-store .medal .back{}
+.reserve-store .medal .front{
+  transform:rotateY(0deg);
+}
+.reserve-store .medal:hover .front{
+  transform:rotateY(180deg);
+}
+.reserve-store .medal .back{
+  transform: rotateY(-180deg);
+}
+.reserve-store .medal:hover .back{
+  transform:rotateY(0deg);
+}
+
+.reserve-store .medal .back .btn{
+  position: absolute;
+  top:240px;
+  left:0;
+  right:0;
+  margin:auto;
+}
