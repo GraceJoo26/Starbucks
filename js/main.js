@@ -99,6 +99,7 @@ searchInputEl.addEventListener('blur',function () {
 
 
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll',_.throttle(function(){
     console.log(window.scrollY);
@@ -110,6 +111,10 @@ window.addEventListener('scroll',_.throttle(function(){
         opacity : 0,
         display : 'none'  
       });
+      //btn  보이기
+      gsap.to(toTopEl,.2, {
+        x: 0
+      });
     }else {
       // 배지 보이기
       //badgeEl.style.display = 'block';
@@ -117,10 +122,21 @@ window.addEventListener('scroll',_.throttle(function(){
         opacity : 1,
         display : 'block'
     });
+      //btn 숨기기
+      gsap.to(toTopEl,0.2, {
+        x: 100
+      });
     }
   },300)); 
 //_.throttle=>scroll event일때 많은 횟수에 걸쳐 실행되지 않도록 control함
 //_.throttle(함수, 시간)
+
+
+toTopEl.addEventListener('click',function () {
+  gsap.to(window, .7,{
+    scrollTo: 0
+  });
+});
 //opacity 속성처럼 값을 숫자로 입력하는 속성들은, 전환효과 (translation 속성이나 gsap 라이브러리등)를 통해 요소의 전/후 상태를 중간 숫자의 값으로 자연스럽게 만들어 줄 수 있지만, display속성처럼 값이 숫자가 아닌 속성은 전/후 상태의 중간값이 존재하지 않기 때문에, 자연스러운 전환효과를 적용 할 수 없습니다.
 
 
