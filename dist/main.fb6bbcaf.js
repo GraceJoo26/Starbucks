@@ -205,6 +205,7 @@ searchInputEl.addEventListener('blur', function () {
   searchInputEl.setAttribute('placeholder', ' '); //searchInputEl에 placeholder라는 html 속성을 넣는다 
 });
 var badgeEl = document.querySelector('header .badges');
+var toTopEl = document.querySelector('#to-top');
 window.addEventListener('scroll', _.throttle(function () {
   console.log(window.scrollY);
 
@@ -215,6 +216,10 @@ window.addEventListener('scroll', _.throttle(function () {
     gsap.to(badgeEl, .6, {
       opacity: 0,
       display: 'none'
+    }); //btn  보이기
+
+    gsap.to(toTopEl, .2, {
+      x: 0
     });
   } else {
     // 배지 보이기
@@ -222,11 +227,20 @@ window.addEventListener('scroll', _.throttle(function () {
     gsap.to(badgeEl, .6, {
       opacity: 1,
       display: 'block'
+    }); //btn 숨기기
+
+    gsap.to(toTopEl, 0.2, {
+      x: 100
     });
   }
 }, 300)); //_.throttle=>scroll event일때 많은 횟수에 걸쳐 실행되지 않도록 control함
 //_.throttle(함수, 시간)
-//opacity 속성처럼 값을 숫자로 입력하는 속성들은, 전환효과 (translation 속성이나 gsap 라이브러리등)를 통해 요소의 전/후 상태를 중간 숫자의 값으로 자연스럽게 만들어 줄 수 있지만, display속성처럼 값이 숫자가 아닌 속성은 전/후 상태의 중간값이 존재하지 않기 때문에, 자연스러운 전환효과를 적용 할 수 없습니다.
+
+toTopEl.addEventListener('click', function () {
+  gsap.to(window, .7, {
+    scrollTo: 0
+  });
+}); //opacity 속성처럼 값을 숫자로 입력하는 속성들은, 전환효과 (translation 속성이나 gsap 라이브러리등)를 통해 요소의 전/후 상태를 중간 숫자의 값으로 자연스럽게 만들어 줄 수 있지만, display속성처럼 값이 숫자가 아닌 속성은 전/후 상태의 중간값이 존재하지 않기 때문에, 자연스러운 전환효과를 적용 할 수 없습니다.
 
 var fadeEls = document.querySelectorAll('.visual .fade-in');
 fadeEls.forEach(function (fadeEl, index) {
@@ -268,6 +282,16 @@ new Swiper('.promotion .swiper-container', {
     nextEl: '.promotion .swiper-next'
   }
 });
+new Swiper('.awards .swiper-container', {
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  navigation: {
+    prevEl: '.awards .swiper-prev',
+    nextEl: '.awards .swiper-next'
+  }
+});
 var promotionEl = document.querySelector('.promotion');
 var promotionToggleBtn = document.querySelector('.toggle-promotion');
 var isHidePromotion = false; //'숨겨져 있니?'변수에 (false)보이고있다.
@@ -282,7 +306,44 @@ promotionToggleBtn.addEventListener('click', function () {
     //보임처리
     promotionEl.classList.remove('hide');
   }
+}); // 범위 랜덤 함수(소수점 2자리까지)
+
+function random(min, max) {
+  // `.toFixed()`를 통해 반환된 문자 데이터를,
+  // `parseFloat()`을 통해 소수점을 가지는 숫자 데이터로 변환
+  return parseFloat((Math.random() * (max - min) + min).toFixed(2));
+}
+
+function floatingObject(selector, delay, size) {
+  //gsap.to(요소, 시간, 옵션);
+  gsap.to(selector, // 선택자 
+  random(1.5, 2.5), // 애니메이션 동작 시간
+  {
+    // 옵션
+    y: size,
+    //y축으로 얼마만큼 움직일것인가
+    repeat: -1,
+    //무한반복
+    yoyo: true,
+    //yoyo처럼 왔다갔다.
+    ease: Power1.easeInout,
+    delay: random(0, delay)
+  });
+}
+
+floatingObject('.floating1', 1, 15);
+floatingObject('.floating2', 0.5, 15);
+floatingObject('.floating3', 1.5, 20);
+var spyEls = document.querySelectorAll('section.scroll-spy');
+spyEls.forEach(function (spyEl) {
+  new ScrollMagic.Scene({
+    triggerElement: spyEl,
+    //보여짐 여부를 감시할 요소를 지정
+    triggerHook: .8
+  }).setClassToggle(spyEl, 'show').addTo(new ScrollMagic.Controller());
 });
+var thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear(); //new 생성자함수 사용
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -311,7 +372,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53713" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50689" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

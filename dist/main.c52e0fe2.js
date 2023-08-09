@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\images\\main_menu_pattern.jpg":[["main_menu_pattern.d27f1d8c.jpg","images/main_menu_pattern.jpg"],"images/main_menu_pattern.jpg"],"./..\\images\\visual_bg.jpg":[["visual_bg.12b4b254.jpg","images/visual_bg.jpg"],"images/visual_bg.jpg"],"./..\\images\\promotion_slide_pager.png":[["promotion_slide_pager.32713a0f.png","images/promotion_slide_pager.png"],"images/promotion_slide_pager.png"],"./..\\images\\promotion_slide_pager_on.png":[["promotion_slide_pager_on.2b454e48.png","images/promotion_slide_pager_on.png"],"images/promotion_slide_pager_on.png"],"./..\\images\\rewards.jpg":[["rewards.1cbbe848.jpg","images/rewards.jpg"],"images/rewards.jpg"],"./..\\images\\video_cover_pattern.png":[["video_cover_pattern.21aef85e.png","images/video_cover_pattern.png"],"images/video_cover_pattern.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./..\\images\\main_menu_pattern.jpg":[["main_menu_pattern.d27f1d8c.jpg","images/main_menu_pattern.jpg"],"images/main_menu_pattern.jpg"],"./..\\images\\visual_bg.jpg":[["visual_bg.12b4b254.jpg","images/visual_bg.jpg"],"images/visual_bg.jpg"],"./..\\images\\promotion_slide_pager.png":[["promotion_slide_pager.32713a0f.png","images/promotion_slide_pager.png"],"images/promotion_slide_pager.png"],"./..\\images\\promotion_slide_pager_on.png":[["promotion_slide_pager_on.2b454e48.png","images/promotion_slide_pager_on.png"],"images/promotion_slide_pager_on.png"],"./..\\images\\rewards.jpg":[["rewards.1cbbe848.jpg","images/rewards.jpg"],"images/rewards.jpg"],"./..\\images\\video_cover_pattern.png":[["video_cover_pattern.21aef85e.png","images/video_cover_pattern.png"],"images/video_cover_pattern.png"],"./..\\images\\season_product_bg.jpg":[["season_product_bg.f4517618.jpg","images/season_product_bg.jpg"],"images/season_product_bg.jpg"],"./..\\images\\reserve_bg.jpg":[["reserve_bg.944236f5.jpg","images/reserve_bg.jpg"],"images/reserve_bg.jpg"],"./..\\images\\favorite_bg.jpg":[["favorite_bg.3da08507.jpg","images/favorite_bg.jpg"],"images/favorite_bg.jpg"],"./..\\images\\reserve_store_bg.jpg":[["reserve_store_bg.d8944045.jpg","images/reserve_store_bg.jpg"],"images/reserve_store_bg.jpg"],"./..\\images\\find_store_bg.jpg":[["find_store_bg.bcb0fa33.jpg","images/find_store_bg.jpg"],"images/find_store_bg.jpg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53713" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50689" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
